@@ -1,0 +1,32 @@
+unbind C-b
+
+set -g prefix C-a
+set -g default-terminal "screen"
+set -g default-command zsh
+
+set -g status-bg black
+set -g status-fg white 
+set -g status-justify centre 
+set -g status-interval 1 
+set -g status-left-length 15 
+set -g status-left '#[fg=blue]#(sysctl vm.loadavg | cut -d" " -f3-5)#[default]'
+set -g status-right '#[fg=blue]%H:%M#[default]'
+
+#setw -g monitor-activity on
+#set -g visual-activity off
+#set -g visual-bell off
+
+set -g set-titles on
+set -g set-titles-string '#H: #W'
+setw -g automatic-rename on
+
+bind-key C-a last
+bind-key C-c new-window
+bind-key 'a' send-prefix
+bind-key 'r' source-file ~/.tmux.conf
+bind-key 'x' lock-server
+bind-key 'c' new-window
+bind-key 'd' detach
+bind-key 'n' next-window
+bind-key 'p' previous-window
+bind-key 'v' choose-window

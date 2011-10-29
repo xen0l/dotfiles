@@ -1,0 +1,7 @@
+*
+
+!.gitignore
+!.vimrc
+!.zshrc
+!.tmux.conf.linux
+!.tmux.conf.bsd
