@@ -30,7 +30,7 @@ export EDITOR=vim
 
 case "$OSTYPE" in
 
-freebsd*)
+freebsd*|darwin*)
 	alias ls="ls -G"
 ;;
 
@@ -99,6 +99,7 @@ case "$TERM" in
 		precmd () { print -Pn "\e]0;%n@%m\:%~\a" } 
 		preexec () { print -Pn "\e]0;%n@%m\:%~ $1\a" }
 	;;
+    
     screen)
 	precmd () { 
 			print -Pn "\e]83;title \"$1\"\a" 
