@@ -16,7 +16,6 @@ compinit
 setopt hist_ignore_all_dups
 setopt nohashcmds
 setopt nohashdirs
-setopt rmstarsilent
 
 # Usefull stuff
 
