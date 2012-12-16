@@ -17,10 +17,21 @@ setopt hist_ignore_all_dups
 setopt nohashcmds
 setopt nohashdirs
 
-# Usefull stuff
+# Useful stuff
 
 export LANG=en_US.UTF-8
-export PATH=$PATH:$HOME/bin
+
+case $OSTYPE in 
+
+darwin*)
+	export PATH=/opt/local/bin:/opt/local/sbin:$PATH:$HOME/bin
+;;
+
+*)
+	export PATH=$PATH:$HOME/bin
+;;
+
+esac
 
 export SHELL=`which zsh`
 export PAGER=less
