@@ -25,7 +25,7 @@ export LANG=en_US.UTF-8
 case $OSTYPE in 
 
 darwin*)
-	export PATH=/usr/local/bin:$PATH:$HOME/bin
+	export PATH=/usr/local/bin:/usr/local/sbin:$PATH:$HOME/bin
 ;;
 
 *)
