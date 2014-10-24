@@ -24,16 +24,14 @@ setopt nobeep
 
 export LANG=en_US.UTF-8
 
-case $OSTYPE in 
+case $OSTYPE in
 
-darwin*)
-	export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin
-;;
-
-*)
-	export PATH=$PATH:$HOME/bin
-;;
-
+	darwin*)
+		export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin
+	;;
+	*)
+		export PATH=$PATH:$HOME/bin
+	;;
 esac
 
 export SHELL=`which zsh`
@@ -41,7 +39,6 @@ export PAGER=less
 export EDITOR=vim
 
 # Aliases
-
 case "$OSTYPE" in
 
 freebsd*|darwin*)
@@ -83,7 +80,6 @@ else
 	eval PR_HOST='${PR_NO_COLOR}%m${PR_NO_COLOR}'		# no SSH connection
 fi
 
-# 
 PS1='%n@${PR_HOST} %c %# '
 PS2=$'%_> '
 
@@ -107,21 +103,3 @@ bindkey "\eOF" end-of-line
 bindkey "\e[H" beginning-of-line
 bindkey "\e[F" end-of-line
 bindkey '^R' history-incremental-search-backward
-
-#case "$TERM" in
-#    *xterm*|rxvt|rxvt-unicode|rxvt-256color|(dt|k|E)term)
-#		precmd () { print -Pn "\e]0;%n@%m\:%~\a" } 
-#		preexec () { print -Pn "\e]0;%n@%m\:%~ $1\a" }
-#	;;
-#    
-#    screen)
-#	precmd () { 
-#			print -Pn "\e]83;title \"$1\"\a" 
-#			print -Pn "\e]0;%n@%m\:%~\a" 
-#		}
-#	preexec () { 
-#			print -Pn "\e]83;title \"$1\"\a" 
-#			print -Pn "\e]0;%n@%m $1\a" 
-#		}
-#	;; 
-#esac
