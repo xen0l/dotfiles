@@ -21,11 +21,9 @@ setopt interactivecomments
 setopt nobeep
 
 # Useful stuff
-
 export LANG=en_US.UTF-8
 
 case $OSTYPE in
-
 	darwin*)
 		export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin
 	;;
