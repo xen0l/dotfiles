@@ -17,6 +17,8 @@ setopt hist_ignore_all_dups
 setopt nohashcmds
 setopt nohashdirs
 setopt rmstarsilent
+setopt interactivecomments
+setopt nobeep
 
 # Useful stuff
 
@@ -25,7 +27,7 @@ export LANG=en_US.UTF-8
 case $OSTYPE in 
 
 darwin*)
-	export PATH=/usr/local/bin:/usr/local/sbin:$PATH:$HOME/bin
+	export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin
 ;;
 
 *)
@@ -106,20 +108,20 @@ bindkey "\e[H" beginning-of-line
 bindkey "\e[F" end-of-line
 bindkey '^R' history-incremental-search-backward
 
-case "$TERM" in
-    *xterm*|rxvt|rxvt-unicode|rxvt-256color|(dt|k|E)term)
-		precmd () { print -Pn "\e]0;%n@%m\:%~\a" } 
-		preexec () { print -Pn "\e]0;%n@%m\:%~ $1\a" }
-	;;
-    
-    screen)
-	precmd () { 
-			print -Pn "\e]83;title \"$1\"\a" 
-			print -Pn "\e]0;%n@%m\:%~\a" 
-		}
-	preexec () { 
-			print -Pn "\e]83;title \"$1\"\a" 
-			print -Pn "\e]0;%n@%m $1\a" 
-		}
-	;; 
-esac
+#case "$TERM" in
+#    *xterm*|rxvt|rxvt-unicode|rxvt-256color|(dt|k|E)term)
+#		precmd () { print -Pn "\e]0;%n@%m\:%~\a" } 
+#		preexec () { print -Pn "\e]0;%n@%m\:%~ $1\a" }
+#	;;
+#    
+#    screen)
+#	precmd () { 
+#			print -Pn "\e]83;title \"$1\"\a" 
+#			print -Pn "\e]0;%n@%m\:%~\a" 
+#		}
+#	preexec () { 
+#			print -Pn "\e]83;title \"$1\"\a" 
+#			print -Pn "\e]0;%n@%m $1\a" 
+#		}
+#	;; 
+#esac
