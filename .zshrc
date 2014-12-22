@@ -142,6 +142,4 @@ bindkey "\e[H" beginning-of-line
 bindkey "\e[F" end-of-line
 bindkey '^R' history-incremental-search-backward
 
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor root line)
-
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
