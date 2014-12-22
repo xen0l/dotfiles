@@ -1,0 +1,19 @@
+[
+  {
+    "link": {
+      "~/.gitconfig": "gitconfig",
+      "~/.vim": "vim",
+      "~/.vimrc": "vimrc",
+      "~/.zsh": "zsh",
+      "~/.zshrc": "zshrc"
+    }
+  },
+  {
+    "shell": [
+      [
+        "git submodule update --init --recursive",
+        "Installing/updating submodules"
+      ]
+    ]
+  }
+]
