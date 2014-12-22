@@ -1,7 +1,7 @@
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.zsh_history
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=5000
+SAVEHIST=5000
 setopt appendhistory
 bindkey -e
 # End of lines configured by zsh-newuser-install
@@ -11,6 +11,45 @@ zstyle :compinstall filename '/home/xenol/.zshrc'
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
+
+# Completion
+#zstyle ':completion:*:*:*:*:*' menu select
+#zstyle ':completion:*:matches' group 'yes'
+#zstyle ':completion:*:options' description 'yes'
+#zstyle ':completion:*:options' auto-description '%d'
+#zstyle ':completion:*:corrections' format ' %F{green}-- %d (errors: %e) --%f'
+#zstyle ':completion:*:descriptions' format ' %F{yellow}-- %d --%f'
+#zstyle ':completion:*:messages' format ' %F{purple} -- %d --%f'
+#zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
+#zstyle ':completion:*:default' list-prompt '%S%M matches%s'
+#zstyle ':completion:*' format ' %F{yellow}-- %d --%f'
+#zstyle ':completion:*' group-name ''
+#zstyle ':completion:*' verbose yes
+
+# Kill
+zstyle ':completion:*:*:*:*:processes' command "ps -u `whoami` -o pid,user,comm -w -w"
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
+zstyle ':completion:*:*:kill:*' menu yes select
+zstyle ':completion:*:*:kill:*' force-list always
+zstyle ':completion:*:*:kill:*' insert-ids single
+
+# Completion caching
+zstyle ':completion:*' accept-exact '*(N)'
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
+
+# Ignore system users
+zstyle ':completion:*:*:*:users' ignored-patterns _\*
+
+# SSH/SCP/RSYNC
+#zstyle ':completion:*:(scp|rsync):*' tag-order 'hosts:-host:host hosts:-domain:domain hosts:-ipaddr:ip\ address *'
+#zstyle ':completion:*:(scp|rsync):*' group-order users files all-files hosts-domain hosts-host hosts-ipaddr
+#zstyle ':completion:*:ssh:*' tag-order users 'hosts:-host:host hosts:-domain:domain hosts:-ipaddr:ip\ address *'
+#zstyle ':completion:*:ssh:*' group-order hosts-domain hosts-host users hosts-ipaddr
+#zstyle ':completion:*:(ssh|scp|rsync):*:hosts-host' ignored-patterns '*(.|:)*' loopback ip6-loopback localhost ip6-localhost broadcasthost
+#zstyle ':completion:*:(ssh|scp|rsync):*:hosts-domain' ignored-patterns '<->.<->.<->.<->' '^[-[:alnum:]]##(.[-[:alnum:]]##)##' '*@*'
+#zstyle ':completion:*:(ssh|scp|rsync):*:hosts-ipaddr' ignored-patterns '^(<->.<->.<->.<->|(|::)([[:xdigit:].]##:(#c,2))##(|%*))' '127.0.0.<->' '255.255.255.255' '::1' 'fe80::*'
+
 
 # Custom zsh options
 setopt hist_ignore_all_dups
@@ -76,6 +115,7 @@ if [[ -n "$SSH_CLIENT" || -n "$SSH2_CLIENT" ]]; then
 	eval PR_HOST='${PR_MAGENTA}%m${PR_NO_COLOR}'		# SSH connection
 else
 	eval PR_HOST='${PR_NO_COLOR}%m${PR_NO_COLOR}'		# no SSH connection
+#	eval PR_HOST='%{$fg[yellow]%}%m$reset_color'		# no SSH connection
 fi
 
 PS1='%n@${PR_HOST} %c %# '
@@ -101,3 +141,7 @@ bindkey "\eOF" end-of-line
 bindkey "\e[H" beginning-of-line
 bindkey "\e[F" end-of-line
 bindkey '^R' history-incremental-search-backward
+
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor root line)
+
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
