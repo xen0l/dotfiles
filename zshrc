@@ -142,4 +142,6 @@ bindkey "\e[H" beginning-of-line
 bindkey "\e[F" end-of-line
 bindkey '^R' history-incremental-search-backward
 
+fpath=(~/.zsh/plguins/zsh-completions/src $fpath)
+
 source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
