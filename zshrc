@@ -142,4 +142,4 @@ bindkey "\e[H" beginning-of-line
 bindkey "\e[F" end-of-line
 bindkey '^R' history-incremental-search-backward
 
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
