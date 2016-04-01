@@ -22,6 +22,7 @@ set bs=2                " Allow backspacing over everything in insert mode
 set ai                  " Always set auto-indenting on
 set history=50          " keep 50 lines of command history
 set ruler               " Show the cursor position all the time
+set paste               " Auto indent pasted code
 
 set viminfo='20,\"500   " Keep a .viminfo file.
 
@@ -180,7 +181,7 @@ augroup gentoo
   " characters at all) isn't a Unicode file, but is in the default encoding.
   " Except of course if a byte-order mark is in effect.
   autocmd BufReadPost *
-        \ if exists("g:added_fenc_utf8") && &fileencoding == "utf-8" && 
+        \ if exists("g:added_fenc_utf8") && &fileencoding == "utf-8" &&
         \    ! &bomb && search('[\x80-\xFF]','nw') == 0 && &modifiable |
         \       set fileencoding= |
         \ endif
