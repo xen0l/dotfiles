@@ -139,6 +139,14 @@ if [[ -e ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; 
 	source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
 
+# History substring search plugin
+if [[ -e ~/.zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh ]]; then
+	source ~/.zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+
+	bindkey '^[[A' history-substring-search-up
+	bindkey '^[[B' history-substring-search-down
+fi
+
 # virtualenvwrapper support
 if command -V virtualenvwrapper_lazy.sh >/dev/null 2>&1; then
 	export WORKON_HOME=$HOME/.virtualenvs
