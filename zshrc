@@ -147,6 +147,11 @@ if [[ -e ~/.zsh/plugins/zsh-history-substring-search/zsh-history-substring-searc
 	bindkey '^[[B' history-substring-search-down
 fi
 
+# Autosuggestion plugin
+if [[ -e ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
+	source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
+
 # virtualenvwrapper support
 if command -V virtualenvwrapper_lazy.sh >/dev/null 2>&1; then
 	export WORKON_HOME=$HOME/.virtualenvs
