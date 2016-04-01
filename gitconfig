@@ -2,6 +2,7 @@
 	name = Adam Števko
 	email = adam.stevko@gmail.com
 	signingkey = F3E7FCC1
+
 [push]
 	default = matching
 
