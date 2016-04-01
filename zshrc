@@ -1,14 +1,13 @@
-# Lines configured by zsh-newuser-install
 HISTFILE=~/.zsh_history
 HISTSIZE=5000
 SAVEHIST=5000
-# End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
+
 zstyle :compinstall filename '/home/xenol/.zshrc'
+
+fpath=(~/.zsh/plguins/zsh-completions/src $fpath)
 
 autoload -Uz compinit
 compinit
-# End of lines added by compinstall
 
 # Completion
 #zstyle ':completion:*:*:*:*:*' menu select
@@ -25,7 +24,7 @@ compinit
 #zstyle ':completion:*' verbose yes
 
 # Kill
-zstyle ':completion:*:*:*:*:processes' command "ps -u `whoami` -o pid,user,comm -w -w"
+zstyle ':completion:*:*:*:*:processes' command "ps -u ${USER} -o pid,user,comm -w -w"
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
 zstyle ':completion:*:*:kill:*' menu yes select
 zstyle ':completion:*:*:kill:*' force-list always
@@ -48,7 +47,6 @@ setopt rmstarsilent
 setopt interactivecomments
 setopt nobeep
 
-
 # Useful stuff
 export LANG=en_US.UTF-8
 
@@ -61,7 +59,6 @@ case ${OSTYPE} in
 	;;
 esac
 
-export SHELL=`which zsh`
 export PAGER=less
 export EDITOR=vim
 
@@ -102,7 +99,17 @@ else
 	eval PR_HOST='${PR_NO_COLOR}%m${PR_NO_COLOR}'		# no SSH connection
 fi
 
-PS1='%n@${PR_HOST} %c %# '
+# VCS
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:*' formats ' (%b)'
+zstyle ':vcs_info:*' actionformats ' (%b|%a)'
+
+precmd() {
+    vcs_info
+}
+
+PS1='%n@${PR_HOST} %c${vcs_info_msg_0_} %# '
 PS2=$'%_> '
 
 # Keybindings
@@ -127,8 +134,14 @@ bindkey "\e[H" beginning-of-line
 bindkey "\e[F" end-of-line
 bindkey '^R' history-incremental-search-backward
 
-fpath=(~/.zsh/plguins/zsh-completions/src $fpath)
-
+# Syntax highlighting plugin
 if [[ -e ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
 	source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
+
+# virtualenvwrapper support
+if command -V virtualenvwrapper_lazy.sh >/dev/null 2>&1; then
+	export WORKON_HOME=$HOME/.virtualenvs
+	export PROJECT_HOME=$HOME/Development
+	source $(command -v virtualenvwrapper_lazy.sh)
 fi
