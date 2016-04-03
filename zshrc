@@ -4,7 +4,7 @@ SAVEHIST=5000
 
 zstyle :compinstall filename '/home/xenol/.zshrc'
 
-fpath=(~/.zsh/plguins/zsh-completions/src $fpath)
+fpath=(~/.zsh/plugins/zsh-completions/src $fpath)
 
 autoload -Uz compinit
 compinit
