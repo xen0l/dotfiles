@@ -1,0 +1,8 @@
+Host *
+GSSAPIAuthentication no
+ServerAliveInterval 30
+ServerAliveCountMax 4
+VerifyHostKeyDNS yes
+UseRoaming no
+
+Include config.local
