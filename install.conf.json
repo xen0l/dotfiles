@@ -17,6 +17,10 @@
         "Creating ~/.ssh"
       ],
       [
+        "mkdir -p -m 700 ~/.gnupg",
+        "Creating ~/.gnupg"
+      ],
+      [
         "c=tmux.conf; case ${OSTYPE} in freebsd*|darwin*) ln -f ${c}.bsd ${c};; linux*) ln -f ${c}.linux ${c} ;; solaris*) ln -f ${c}.sunos ${c} ;; esac",
         "Linking tmux configuration file based on operating system"
       ]
@@ -27,6 +31,8 @@
       "~/.curlrc": "curlrc",
       "~/.gitconfig": "gitconfig",
       "~/.gitignore_global": "gitignore_global",
+      "~/.gnupg/gpg.conf": "gpg.conf",
+      "~/.gnupg/sks-keyservers.netCA.pem": "sks-keyservers.netCA.pem",
       "~/.tmux.conf": "tmux.conf",
       "~/.vim": "vim",
       "~/.vimrc": "vimrc",
