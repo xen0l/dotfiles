@@ -9,7 +9,7 @@ set -g status-fg white
 set -g status-justify centre
 set -g status-interval 1
 set -g status-left-length 15
-set -g status-left '#[fg=blue]#(sysctl vm.loadavg | cut -d" " -f3-5)#[default]'
+set -g status-left '#[fg=blue]#(/usr/bin/uptime | sed "s/.*average: \(.*\), \(.*\), \(.*\)$/\1 \2 \3/g")#[default]'
 set -g status-right '#[fg=blue]%H:%M#[default]'
 
 #setw -g monitor-activity on

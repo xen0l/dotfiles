@@ -5,4 +5,6 @@
 !.zshrc
 !.tmux.conf.linux
 !.tmux.conf.bsd
+!.tmux.conf.sunos
+!ssh_config
 !zsh

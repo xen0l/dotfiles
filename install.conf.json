@@ -1,9 +1,32 @@
 [
   {
+    "defaults": {
+      "link": {
+        "relink": true
+      }
+    }
+  },
+  {
+    "shell": [
+      [
+        "git submodule update --init --recursive",
+        "Installing/updating submodules"
+      ],
+      [
+        "mkdir -p -m 700 ~/.ssh",
+        "Creating ~/.ssh"
+      ],
+      [
+        "c=tmux.conf; case ${OSTYPE} in freebsd*|darwin*) ln -f ${c}.bsd ${c};; linux*) ln -f ${c}.linux ${c} ;; solaris*) ln -f ${c}.sunos ${c} ;; esac",
+        "Linking tmux configuration file based on operating system"
+      ]
+    ]
+  },
+  {
     "link": {
       "~/.gitconfig": "gitconfig",
       "~/.gitignore_global": "gitignore_global",
-      "~/.tmux.conf": "tmux.conf.bsd",
+      "~/.tmux.conf": "tmux.conf",
       "~/.vim": "vim",
       "~/.vimrc": "vimrc",
       "~/.zsh": "zsh",
@@ -12,11 +35,8 @@
     }
   },
   {
-    "shell": [
-      [
-        "git submodule update --init --recursive",
-        "Installing/updating submodules"
-      ]
+    "clean": [
+      "~"
     ]
   }
 ]

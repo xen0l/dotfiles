@@ -54,6 +54,9 @@ case ${OSTYPE} in
 	darwin*)
 		export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin
 	;;
+	solaris*)
+		export PATH=/usr/gnu/bin:/usr/gnu/sbin:/usr/bin:/usr/sbin:$PATH:$HOME/bin
+	;;
 	*)
 		export PATH=$PATH:$HOME/bin
 	;;
@@ -70,11 +73,11 @@ case "${OSTYPE}" in
 	linux-gnu)
 		eval `dircolors -b`
 		alias ls="ls --color"
+		alias grep="grep --color=auto"
+		alias egrep="grep --color=auto"
 	;;
 esac
 
-alias grep="grep --color=auto"
-alias egrep="grep --color=auto"
 alias vi=vim
 
 # Prompt
