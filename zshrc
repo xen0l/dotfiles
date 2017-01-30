@@ -76,6 +76,9 @@ case "${OSTYPE}" in
 		alias grep="grep --color=auto"
 		alias egrep="grep --color=auto"
 	;;
+	solaris*)
+		alias ls="ls --color=auto"
+	;;
 esac
 
 alias vi=vim
