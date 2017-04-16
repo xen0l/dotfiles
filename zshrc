@@ -1,6 +1,6 @@
 HISTFILE=~/.zsh_history
-HISTSIZE=5000
-SAVEHIST=5000
+HISTSIZE=10000
+SAVEHIST=10000
 
 zstyle :compinstall filename '/home/xenol/.zshrc'
 
